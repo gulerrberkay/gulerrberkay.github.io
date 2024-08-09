@@ -1,1 +1,57 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprinkles on Mouse Move</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a; /* Darkish background */
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .sprinkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .center-text {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-text">
+        This is the centered text.
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            let sprinkle = document.createElement('div');
+            sprinkle.classList.add('sprinkle');
+            sprinkle.style.left = e.clientX + 'px';
+            sprinkle.style.top = e.clientY + 'px';
+
+            document.body.appendChild(sprinkle);
+
+            // Remove the sprinkle after some time
+            setTimeout(function() {
+                sprinkle.remove();
+            }, 500); // Adjust time for how long sprinkles last
+        });
+    </script>
+</body>
+</html>
+
